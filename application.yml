@@ -1,0 +1,118 @@
+server:
+  port: 8121
+
+#Database configuration
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: acrsepic
+    password: xrumtmvabhkqjqpu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    url: jdbc:mysql://124.43.16.185:50207/acrs_qa_test?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: Ep1klanka@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimumIdle: 1
+      maximumPoolSize: 5
+      idleTimeout: 300000
+      maxLifetime: 500000
+      connectionTimeout: 500000
+      poolName: acr-sync-pool
+
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    enabled: false
+
+epic:
+  app:
+    url: http://124.43.16.185:50218
+  eod:
+    pre-legal-mark:
+      cron: 0 39 1 * * ?
+    agency-shuffle:
+      cron: 0 14 1 * * ?
+    account:
+      cron: 0 24 18 * * ?
+    assignment:
+      cron: 0 50 2 * * ?
+    alert-generation-phase-1:
+      cron: 0 31 3 * * ?
+    alert-generation-phase-2:
+      cron: 0 31 5 * * ?
+    agent-expire:
+      cron: 0 20 2 * * ?
+    monthly-statistics:
+      cron: 0 43 16 * * ?
+    group-account:
+      cron: 0 20 2 * * ?
+    queue-priority:
+      cron:  0 31 4 * * ?
+    promises:
+      cron: 0 31 1 * * ?
+    kpi-calculation:
+      cron: 0 31 5 * * ?
+    writeOff-calc:
+      cron: 0 51 12 * * ?
+    pre-save:
+      cron: 0 31 4 * * ?
+    auction-ready:
+      cron: 0 31 2 * * ?
+    account-assign:
+      cron: 0 57 10 * * ?
+    strategy-simulation:
+      cron: 0 0/15 * * * ?
+
+
+file:
+  path:
+    baseInputPath:  /root/ACRS/files/Input
+    baseOutputPath: /root/ACRS/files/Output
+    delinquentAccountAddressBatch: DELINQUENT_ACCOUNT_ADDRESS.csv
+    delinquentAccountWriteOffAddressBatch: DELINQUENT_ACCOUNT_WRITEOFF_ADDRESS.csv
+    delinquentAccountBatch: DELINQUENT_ACCOUNT.csv
+    writeOffAccBatch: WRITEOFF_ACCOUNT.csv
+    delinquentAccountEmailBatch: DELINQUENT_ACCOUNT_EMAIL.csv
+    writeOffEmailBatch: WRITEOFF_EMAIL.csv
+    delinquentAccountPaymentDetailsBatch: DELINQUENT_ACCOUNT_PAYMENT_DETAILS.csv
+    writeOffPaymentDetailsBatch: WRITEOFF_PAYMENT_DETAILS.csv
+    delinquentAccountStatementBatch: DELINQUENT_ACCOUNT_STATEMENT.csv
+    writeOffStatementBatch: WRITEOFF_STATEMENT.csv
+    delinquentAccountTelephoneBatch: DELINQUENT_ACCOUNT_TEL_NUM.csv
+    writeOffTelephoneBatch: WRITEOFF_TEL_NUM.csv
+    riskBucketBatch: RISK_BUCKET.csv
+    thirdPartyOwnerBatch: THIRD_PARTY_OWNER.csv
+    assetInfoBatch: ASSET_INFO_BATCH.csv
+acrs:
+  court:
+    hours: 1
+  security:
+    time-gap: 15
+    by-pass: 1
+    ssl: 1
+    https-age: 120
+doxmate:
+  base-url:  http://epictechdev.com:50231
+  start-flow: /dwfservice/user-form/approve-work-flow-acrs
+  update-flow: /dwfservice/user-form/update-work-flow-acrs
+  tenant-id: 463
+  x-tenant: acrst_6a01fc93-6d3a-3d51-840c-6f941e685fc7
+
+
+
+
