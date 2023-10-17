@@ -1,0 +1,56 @@
+# For development
+server:
+  port: 8200
+# For production
+#server:
+#  port: 8200
+#  address: 0.0.0.0
+
+#Database configuration
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  datasource:
+    url: jdbc:mysql://124.43.16.185:50207/acrs_demo_hnb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: Ep1klanka@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  #liquibase
+  liquibase:
+    enabled: true
+    default-schema: acrs_demo_hnb
+    change-log: classpath:db/changelog/db.changelog.master.xml
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+file:
+  path:
+    baseInputPath: E:\ACRS\IN
+    baseOutputPath: E:\ACRS\OUT
+acrs:
+  security:
+    time-gap: 10
+    by-pass: 1
+    ssl: 0
+    token-skip: 0
+
+application:
+  name: main
+  propertiesspring:
+    cache:
+      jcache:
+        config: classpath:ehcache.xml

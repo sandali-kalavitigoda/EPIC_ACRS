@@ -1,0 +1,71 @@
+server:
+  port: 8120
+
+#Database configuration
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+
+  datasource:
+    url: jdbc:mysql://124.43.16.185:50207/acrs_demo_hnb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: Ep1klanka@123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    enabled: false
+
+epic:
+  app:
+    url: http://localhost:8120
+  eod:
+    pre-legal-mark:
+      cron: 0 39 15 * * ?
+    agency-shuffle:
+      cron: 0 14 14 * * ?
+    account:
+      cron:  0 27 18 * * ?
+    assignment:
+      cron: 0 50 2 * * ?
+    alert-generation-phase-1:
+      cron: 0 31 3 * * ?
+    alert-generation-phase-2:
+      cron: 0 07 18 * * ?
+    agent-expire:
+      cron: 0 16 14 * * ?
+    group-account:
+      cron: 0 10 15 * * ?
+    promises:
+      cron: 0 45 10 * * ?
+
+file:
+  path:
+    baseInputPath:   E:\ACRS\IN
+    baseOutputPath:  E:\ACRS\OUT
+
+    delinquentAccountAddressBatch: DELINQUENT_ACCOUNT_ADDRESS.csv
+    delinquentAccountBatch: DELINQUENT_ACCOUNT.csv
+    delinquentAccountEmailBatch: DELINQUENT_ACCOUNT_EMAIL.csv
+    delinquentAccountPaymentDetailsBatch: DELINQUENT_ACCOUNT_PAYMENT_DETAILS.csv
+    delinquentAccountStatementBatch: DELINQUENT_ACCOUNT_STATEMENT.csv
+    delinquentAccountTelephoneBatch: DELINQUENT_ACCOUNT_TEL_NUM.csv
+    thirdPartyOwnerBatch: THIRD_PARTY_OWNER.csv
+
+application:
+  name: retriever
+  propertiesspring:
+    cache:
+      jcache:
+        config: classpath:ehcache.xml
+
+
+
