@@ -5,7 +5,17 @@ server:
 spring:
   config:
     import: optional:configserver:http://localhost:8888
-
+  application:
+    name: acrs-retriever
+  acrs-main:
+    eureka:
+      client:
+        serviceUrl:
+          defaultZone: http://localhost:8761/eureka
+        instance:
+          preferIpAddress: true
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:mysql://124.43.16.185:50207/acrs_demo_hnb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
@@ -49,7 +59,7 @@ epic:
 
 file:
   path:
-    baseInputPath:   E:\ACRS\IN
+    baseInputPath:   /Users/sandalikalavitigoda/Documents/EPIC/ACRS/Agent
     baseOutputPath:  E:\ACRS\OUT
 
     delinquentAccountAddressBatch: DELINQUENT_ACCOUNT_ADDRESS.csv
@@ -60,12 +70,7 @@ file:
     delinquentAccountTelephoneBatch: DELINQUENT_ACCOUNT_TEL_NUM.csv
     thirdPartyOwnerBatch: THIRD_PARTY_OWNER.csv
 
-application:
-  name: retriever
-  propertiesspring:
-    cache:
-      jcache:
-        config: classpath:ehcache.xml
+
 
 
 
