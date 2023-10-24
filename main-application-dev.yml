@@ -10,12 +10,23 @@ server:
 spring:
   config:
     import: optional:configserver:http://localhost:8888
-
+  batch:
+    job:
+      enabled: false
+  application:
+    name: acrsMain
   datasource:
-    url: jdbc:mysql://124.43.16.185:50207/acrs_demo_hnb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://124.43.16.185:50207/acrs_qa?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: Ep1klanka@123
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    instance:
+    preferIpAddress: true
 
   jpa:
     show-sql: true
@@ -37,6 +48,9 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+  logback:
+    rollingpolicy:
+      clean-history-on-start:
 file:
   path:
     baseInputPath: E:\ACRS\IN
@@ -47,10 +61,14 @@ acrs:
     by-pass: 1
     ssl: 0
     token-skip: 0
+  starteod:
+    path-url: http://localhost:8120/startEod/
+
 
 application:
-  name: main
   propertiesspring:
     cache:
       jcache:
         config: classpath:ehcache.xml
+
+
