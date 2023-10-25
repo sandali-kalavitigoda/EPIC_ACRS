@@ -33,7 +33,7 @@ spring:
       max-file-size: 5MB
       max-request-size:  5MB
   datasource:
-    url: jdbc:mysql://124.43.16.185:50207/acrs_qa?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://124.43.16.185:50207/acrs_demo_hnb?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC &createDatabaseIfNotExists=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: Ep1klanka@123
     driver-class-name: com.mysql.cj.jdbc.Driver
